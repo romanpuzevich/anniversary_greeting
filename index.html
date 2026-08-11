@@ -1,285 +1,399 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Наша годовщина • Prod. by Will Smith</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наша годовщина • Prod. by Will Smith</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=Marck+Script&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Manrope:wght@300;400;600&family=Marck+Script&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
 
-<style>
-:root{
-  --bg:#0d0a09;
-  --bg-soft:#161010;
-  --gold:#d3a95f;
-  --gold-soft:#e9cd96;
-  --cream:#f5ecdd;
-  --muted:#b7a48d;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  background:var(--bg);color:var(--cream);
-  font-family:'Manrope',sans-serif;font-weight:300;
-  line-height:1.75;overflow-x:hidden;
-}
-img,video{max-width:100%;display:block}
+    <style>
+        :root {
+            --bg: #ffffff;
+            --bg-soft: #f8f5f2;
+            --gold: #b68b40;
+            --gold-soft: #d4af6a;
+            --text: #1a1a1a;
+            --text-muted: #5c5c5c;
+            --border-light: rgba(180, 140, 100, 0.4);
+        }
 
-/* ---------- появление при скролле ---------- */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity 1s ease,transform 1s ease}
-.reveal.visible{opacity:1;transform:none}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* ================= ШАПКА ================= */
-.hero{
-  position:relative;height:100vh;min-height:640px;
-  display:flex;align-items:center;justify-content:center;
-  text-align:center;overflow:hidden;
-}
-.hero__bg{
-  position:absolute;inset:0;
-  background:url('media/hero.jpg') center/cover no-repeat; /* ← ВАШЕ ФОТО */
-  transform:scale(1.08);animation:heroZoom 12s ease-out forwards;
-}
-@keyframes heroZoom{to{transform:scale(1)}}
-.hero__shade{
-  position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(10,7,6,.55) 0%,rgba(10,7,6,.25) 45%,rgba(13,10,9,.97) 100%);
-}
-.hero__content{position:relative;z-index:2;padding:0 20px;max-width:900px}
-.hero__kicker{
-  font-size:.8rem;letter-spacing:.45em;text-transform:uppercase;
-  color:var(--gold-soft);margin-bottom:28px;
-}
-.hero__title{
-  font-family:'Playfair Display',serif;font-weight:700;
-  font-size:clamp(1.9rem,5.2vw,4rem);line-height:1.2;
-  text-shadow:0 4px 30px rgba(0,0,0,.6);
-}
-.hero__title span{font-style:italic;font-weight:500;color:var(--gold-soft)}
-.hero__credit{ /* «Prod. by Will Smith» — мелко, как в титрах */
-  margin-top:34px;font-size:.72rem;letter-spacing:.35em;
-  text-transform:uppercase;color:var(--muted);
-  display:flex;align-items:center;justify-content:center;gap:18px;
-}
-.hero__credit::before,.hero__credit::after{
-  content:"";height:1px;width:52px;background:linear-gradient(90deg,transparent,var(--gold));
-}
-.hero__credit::after{background:linear-gradient(90deg,var(--gold),transparent)}
-.hero__scroll{
-  position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
-  z-index:2;color:var(--muted);text-decoration:none;
-  font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;
-  display:flex;flex-direction:column;align-items:center;gap:10px;
-}
-.hero__scroll i{
-  width:1px;height:44px;background:var(--gold);display:block;
-  animation:drip 2s ease-in-out infinite;transform-origin:top;
-}
-@keyframes drip{0%{transform:scaleY(0)}55%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+        html {
+            scroll-behavior: smooth;
+        }
 
-/* ================= СЦЕНЫ С ВИДЕО ================= */
-.scene{padding:110px 20px;background:var(--bg)}
-.scene__inner{max-width:900px;margin:0 auto}
-.scene__label{
-  text-align:center;color:var(--gold);font-size:.75rem;
-  letter-spacing:.4em;text-transform:uppercase;margin-bottom:18px;
-}
-.letter{ /* ваши слова-пожелания */
-  max-width:680px;margin:0 auto 44px;text-align:center;
-  font-size:clamp(1.05rem,2vw,1.25rem);color:var(--cream);
-}
-.letter--after{margin:44px auto 0}
-.letter em{font-family:'Marck Script',cursive;font-size:1.35em;color:var(--gold-soft)}
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Manrope', sans-serif;
+            font-weight: 300;
+            line-height: 1.75;
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
+        }
 
-/* кино-рамка с «плёнкой» по краям */
-.frame{position:relative;max-width:960px;margin:0 auto}
-.frame video{
-  width:100%;aspect-ratio:16/9;background:#000;
-  border-radius:4px;border:1px solid rgba(211,169,95,.35);
-  box-shadow:0 20px 70px rgba(0,0,0,.7),0 0 60px rgba(211,169,95,.08);
-}
-.film-edge{
-  position:absolute;top:6px;bottom:6px;width:26px;background:#080606;
-  background-image:radial-gradient(rgba(245,236,221,.75) 2.5px,transparent 3.2px);
-  background-size:100% 22px;background-position:center;
-  border-radius:3px;
-}
-.film-edge--l{left:-38px}.film-edge--r{right:-38px}
-.frame figcaption{
-  margin-top:16px;text-align:center;color:var(--muted);
-  font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;
-}
-@media(max-width:1080px){.film-edge{display:none}}
+        img,
+        video {
+            max-width: 100%;
+            display: block;
+        }
 
-/* ================= БЛОК-ПЕРЕХОД ================= */
-.interlude{
-  position:relative;min-height:92vh;
-  display:flex;align-items:center;justify-content:center;
-  text-align:center;padding:120px 24px;overflow:hidden;
-}
-.interlude__bg{
-  position:absolute;inset:0;
-  background:url('media/petals.jpg') center/cover no-repeat fixed; /* ← фон перехода */
-}
-.interlude__shade{
-  position:absolute;inset:0;
-  background:
-    linear-gradient(180deg,var(--bg) 0%,transparent 22%,transparent 78%,var(--bg) 100%),
-    rgba(13,10,9,.55);
-}
-.interlude__text{position:relative;z-index:2;max-width:760px}
-.interlude__text p{
-  font-family:'Playfair Display',serif;font-style:italic;font-weight:500;
-  font-size:clamp(1.3rem,3.2vw,2.1rem);line-height:1.55;
-  text-shadow:0 3px 24px rgba(0,0,0,.8);
-}
-.interlude__text .sig{
-  display:block;margin-top:30px;font-family:'Marck Script',cursive;
-  font-style:normal;font-size:clamp(1.4rem,3vw,2rem);color:var(--gold-soft);
-}
+        /* ---------- появление при скролле ---------- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
 
-/* ================= ФИНАЛ ================= */
-.finale{padding:120px 20px 90px;text-align:center;background:var(--bg)}
-.finale__photo{
-  max-width:760px;margin:0 auto;position:relative;
-  padding:14px;background:#1a1412;
-  border:1px solid rgba(211,169,95,.4);
-  box-shadow:0 30px 90px rgba(0,0,0,.75);
-  transform:rotate(-1.2deg);
-}
-.finale__photo img{width:100%;filter:saturate(1.05)}
-.finale__caption{
-  margin-top:44px;font-family:'Marck Script',cursive;
-  font-size:clamp(1.5rem,3.4vw,2.3rem);color:var(--gold-soft);
-}
-.finale__sub{margin-top:14px;color:var(--muted);font-size:.95rem}
-.finale__end{
-  margin-top:70px;font-size:.72rem;letter-spacing:.5em;
-  text-transform:uppercase;color:var(--muted);
-}
-.finale__end b{color:var(--gold)}
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
 
-/* ---------- кнопка музыки ---------- */
-.music{
-  position:fixed;right:22px;bottom:22px;z-index:50;
-  width:52px;height:52px;border-radius:50%;cursor:pointer;
-  background:rgba(22,16,16,.8);color:var(--gold);
-  border:1px solid rgba(211,169,95,.5);font-size:1.2rem;
-  backdrop-filter:blur(6px);transition:.3s;
-}
-.music.playing{color:#0d0a09;background:var(--gold)}
-</style>
+        /* ================= ШАПКА ================= */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 640px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: url('media/hero.jpg') center/cover no-repeat;
+        }
+
+        .hero__shade {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+            max-width: 900px;
+        }
+
+        .hero__kicker {
+            font-size: 0.72rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--gold-soft);
+            margin-bottom: 28px;
+        }
+
+        .hero__title {
+            font-family: 'Playfair Display', serif;   /* красивый печатный шрифт */
+            font-weight: 700;
+            font-size: clamp(2.2rem, 5.6vw, 4.2rem);
+            line-height: 1.25;
+            color: #ffffff;                            /* чистый белый */
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+            letter-spacing: 0.01em;
+            margin-bottom: 12px;
+        }
+
+        .hero__title span {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            font-style: italic;
+            font-size: 0.82em;
+            color: #ffffff;                            /* тот же белый, без кремового */
+            margin-top: 10px;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.6);
+        }
+
+        /* «с любовью, твой муж» перенесено в финал — здесь больше не нужно */
+
+        .hero__scroll {
+            position: absolute;
+            bottom: 26px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            color: #f5ecdd;
+            text-decoration: none;
+            font-size: 0.72rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero__scroll span {
+            width: 1px;
+            height: 44px;
+            background: #d4af6a;
+            display: block;
+            animation: drip 2s ease-in-out infinite;
+            transform-origin: top;
+        }
+
+        @keyframes drip {
+            0% { transform: scaleY(0); }
+            55% { transform: scaleY(1); }
+            100% { transform: scaleY(1); opacity: 0; }
+        }
+
+        /* ================= ОСНОВНЫЕ БЛОКИ ================= */
+        .section {
+            padding: 100px 20px;
+            background: var(--bg);
+        }
+
+        .section--alt {
+            background: var(--bg-soft);
+        }
+
+        .section__inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section__label {
+            text-align: center;
+            color: var(--gold);
+            font-size: 0.8rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .letter {
+            max-width: 680px;
+            margin: 0 auto 44px;
+            text-align: center;
+            font-size: clamp(1.05rem, 2vw, 1.25rem);
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .letter--after {
+            margin: 44px auto 0;
+        }
+
+        .letter--greeting {
+            /* «Даша,» — крупно и красиво */
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--text);
+            margin-bottom: 44px;
+        }
+
+        .letter em {
+            font-family: 'Marck Script', cursive;
+            font-size: 1.4em;
+            color: var(--gold);
+            font-style: normal;
+        }
+
+        /* видео-контейнер */
+        .video-wrapper {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08), 0 0 0 1px var(--border-light);
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #f0ede8;
+            display: block;
+        }
+
+        /* ================= БЛОК-ПЕРЕХОД ================= */
+        .interlude {
+            position: relative;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 24px;
+            overflow: hidden;
+            background: url('media/petals.jpg') center/cover no-repeat fixed;
+        }
+
+        @media (max-width: 768px) {
+            .interlude {
+                background-attachment: scroll;
+            }
+        }
+
+        .interlude__shade {
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: None;
+            z-index: 1;
+        }
+
+        .interlude__text {
+            position: relative;
+            z-index: 2;
+            max-width: 720px;
+            color: #1a1a1a;
+            padding: 30px;
+        }
+
+        .interlude__text p {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: clamp(1.3rem, 3.2vw, 2.1rem);
+            line-height: 1.55;
+            color: #222;
+        }
+
+        .interlude__text .sig {
+            display: block;
+            margin-top: 30px;
+            font-family: 'Marck Script', cursive;
+            font-style: normal;
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            color: #8b6b3d;
+        }
+
+        /* ================= ФИНАЛ ================= */
+        .finale {
+            padding: 100px 20px 80px;
+            text-align: center;
+            background: var(--bg);
+        }
+
+        .finale__photo {
+            max-width: 650px;
+            margin: 0 auto;
+            position: relative;
+            padding: 12px;
+            background: #faf7f3;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+            transform: rotate(-0.8deg);
+        }
+
+        .finale__photo img {
+            width: 100%;
+        }
+
+        .finale__caption {
+            margin-top: 40px;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+            color: var(--text);                 /* чёрный */
+        }
+
+        .finale__end {
+            margin-top: 60px;
+            font-size: 0.78rem;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            color: var(--text);                 /* чёрный */
+        }
+
+        .finale__end b {
+            color: var(--text);                 /* чёрный */
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
 
-<!-- ═══════════ ШАПКА ═══════════ -->
-<header class="hero">
-  <div class="hero__bg"></div>
-  <div class="hero__shade"></div>
-  <div class="hero__content reveal visible">
-    <p class="hero__kicker">в главных ролях — ты и я</p>
-    <h1 class="hero__title">Посвящается любимой жене<br><span>в день годовщины</span></h1>
-    <p class="hero__credit">Prod. by Will Smith</p>
-  </div>
-  <a class="hero__scroll" href="#scene-1"><i></i>фильм начинается</a>
-</header>
+    <!-- ═══════════ ШАПКА ═══════════ -->
+    <header class="hero">
+        <div class="hero__shade"></div>
+        <div class="hero__content reveal visible">
+            <h1 class="hero__title">Посвящается любимой жене<br><span>в день годовщины</span></h1>
+            <p class="hero__kicker">prod. by Will Smith</p>
+        </div>
+        <a class="hero__scroll" href="#block1"><span></span>листай дальше</a>
+    </header>
 
-<!-- ═══════════ БЛОК 1: первое видео + ваши слова ═══════════ -->
-<section class="scene" id="scene-1">
-  <div class="scene__inner">
-    <p class="scene__label reveal">Сцена первая</p>
+    <!-- ═══════════ БЛОК 1: обращение → видео → фраза ═══════════ -->
+    <section class="section" id="block1">
+        <div class="section__inner">
 
-    <!-- ✏️ ВАШИ СЛОВА ВЫШЕ ВИДЕО -->
-    <p class="letter reveal">
-      Родная моя, каждый год с тобой — как новая сцена хорошего фильма.
-      И сегодня я хочу показать тебе кадры, после которых ты улыбнёшься…
-    </p>
+            <p class="letter letter--greeting reveal">Дорогая моя Даша,</p>
 
-    <figure class="frame reveal">
-      <span class="film-edge film-edge--l"></span>
-      <span class="film-edge film-edge--r"></span>
-      <!--  ЗАМЕНИТЕ: media/clip-1.mp4 на ваш видеофрагмент -->
-      <video controls playsinline preload="metadata" poster="media/poster-1.jpg">
-        <source src="media/clip-1.mp4" type="video/mp4">
-        Ваш браузер не поддерживает видео.
-      </video>
-      <figcaption>кадр из фильма • фрагмент первый</figcaption>
-    </figure>
+            <figure class="video-wrapper reveal">
+                <video controls playsinline preload="metadata">
+                    <source src="media/clip-1.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает видео.
+                </video>
+            </figure>
 
-    <!-- ✏️ ВАШИ СЛОВА НИЖЕ ВИДЕО -->
-    <p class="letter letter--after reveal">
-      …потому что, как говорит герой Уилла Смита:
-      <em>«Если ты чего-то хочешь — иди и возьми».</em>
-      Я взял своё счастье в тот день, когда ты сказала «да».
-    </p>
-  </div>
-</section>
+            <p class="letter letter--after reveal">
+                … минуты, а с каждым днём — всё сильнее.<br>
+                И хочу, чтобы так было всегда.
+            </p>
+        </div>
+    </section>
 
-<!-- ═══════════ БЛОК 2: плавный переход с текстом ═══════════ -->
-<section class="interlude">
-  <div class="interlude__bg"></div>
-  <div class="interlude__shade"></div>
-  <blockquote class="interlude__text reveal">
-    <!-- ✏️ ВАШ ТЕКСТ ДЛЯ ПЕРЕХОДА -->
-    <p>Говорят, у каждой любви — своё кино.
-       У нас с тобой — моё самое любимое:
-       без сценария, но с судьбой.</p>
-    <span class="sig">твой муж</span>
-  </blockquote>
-</section>
+    <!-- ═══════════ БЛОК 2: переход ═══════════ -->
+    <section class="interlude">
+        <div class="interlude__shade"></div>
+        <blockquote class="interlude__text reveal">
+            <p>Но любовь становится ещё крепче,<br>когда за ней стоит столько тёплых моментов.</p>
+        </blockquote>
+    </section>
 
-<!-- ═══════════ БЛОК 3: второе видео с подписью ═══════════ -->
-<section class="scene">
-  <div class="scene__inner">
-    <p class="scene__label reveal">Сцена вторая</p>
-    <figure class="frame reveal">
-      <span class="film-edge film-edge--l"></span>
-      <span class="film-edge film-edge--r"></span>
-      <!-- 🎬 ЗАМЕНИТЕ: media/clip-2.mp4 на ваш видеофрагмент -->
-      <video controls playsinline preload="metadata" poster="media/poster-2.jpg">
-        <source src="media/clip-2.mp4" type="video/mp4">
-        Ваш браузер не поддерживает видео.
-      </video>
-    </figure>
-    <!-- ✏️ НЕБОЛЬШАЯ ПОДПИСЬ ПОД ВИДЕО -->
-    <p class="letter letter--after reveal" style="font-size:1rem;color:var(--muted)">
-      Сцена, после которой я понял: ты — моя главная роль.
-    </p>
-  </div>
-</section>
+    <!-- ═══════════ БЛОК 3: слова → видео ═══════════ -->
+    <section class="section section--alt">
+        <div class="section__inner">
 
-<!-- ═══════════ БЛОК 4: финал ═══════════ -->
-<section class="finale">
-  <figure class="finale__photo reveal">
-    <!-- 📷 ЗАМЕНИТЕ: media/finale.jpg на ваше совместное фото -->
-    <img src="media/finale.jpg" alt="Мы вдвоём">
-  </figure>
-  <!-- ✏️ ПОДПИСЬ К ФИНАЛЬНОМУ ФОТО -->
-  <p class="finale__caption reveal">Продолжение следует… всю жизнь ♥</p>
-  <p class="finale__sub reveal">Спасибо, что делаешь каждый наш кадр счастливым.</p>
-  <p class="finale__end reveal"><b>The End</b> • и это только начало</p>
-</section>
+            <p class="letter reveal">
+                Спасибо тебе за каждый прожитый день,<br>
+                за утро с твоей улыбкой и вечер в твоих объятиях.
+            </p>
 
-<!-- ♫ опционально: ваша мелодия -->
-<audio id="music" src="media/music.mp3" loop></audio>
-<button class="music" id="musicBtn" title="Музыка">♪</button>
+            <figure class="video-wrapper reveal">
+                <video controls playsinline preload="metadata">
+                    <source src="media/clip-2.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает видео.
+                </video>
+            </figure>
+        </div>
+    </section>
 
-<script>
-// плавное появление блоков при прокрутке
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => e.isIntersecting && e.target.classList.add('visible'));
-}, {threshold:.15});
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    <!-- ═══════════ БЛОК 4: финал ═══════════ -->
+    <section class="finale">
+        <figure class="finale__photo reveal">
+            <img src="media/finale.jpg" alt="Мы вдвоём">
+        </figure>
+        <p class="finale__caption reveal">Продолжение следует… всю жизнь</p>
+        <p class="finale__end reveal"><b>С любовью, твой муж</b> • 12.08</p>
+    </section>
 
-// кнопка музыки
-const audio = document.getElementById('music'),
-      btn   = document.getElementById('musicBtn');
-btn.addEventListener('click', () => {
-  if (audio.paused) { audio.play().catch(()=>{}); btn.classList.add('playing'); }
-  else { audio.pause(); btn.classList.remove('playing'); }
-});
-</script>
+    <script>
+        const io = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    </script>
 </body>
 </html>
